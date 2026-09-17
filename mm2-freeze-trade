@@ -1,1 +1,1520 @@
-d
+local MM2Client = {
+    Version = "3.7.1",
+    Build = "Freeze-Script-MM2",
+    State = "ACTIVE",
+    Mode = "LIVE",
+    Player = {},
+    Round = {},
+    Murderer = {},
+    Sheriff = {},
+    Innocents = {},
+    Inventory = {},
+    Map = {},
+    UI = {},
+    Network = {},
+    Security = {},
+    Freeze = {},
+    Detection = {},
+    Prediction = {},
+    Cache = {},
+    Runtime = {},
+    Combat = {},
+    Movement = {},
+    Targeting = {},
+    Visuals = {},
+    Roles = {},
+    Session = {},
+    Diagnostics = {},
+    Interface = {},
+    Engine = {},
+    Modules = {},
+    Telemetry = {},
+    Performance = {},
+    Configuration = {},
+    Workspace = {},
+    Replication = {},
+    Character = {},
+    Animation = {},
+    Equipment = {},
+    RoundState = {},
+    World = {},
+    Input = {},
+    Rendering = {},
+    State = {},
+    Registry = {},
+    Resources = {},
+    Handlers = {},
+    Controllers = {},
+    Services = {},
+    Components = {},
+    Windows = {},
+    Pages = {},
+    Panels = {},
+    Widgets = {},
+    Flags = {},
+    Profiles = {},
+    Metadata = {}
+}
+
+MM2Client.Metadata = {
+    Name = "MM2 Client Interface",
+    Product = "Murder Mystery Runtime",
+    Edition = "Community",
+    Channel = "Stable",
+    Architecture = "Client",
+    Protocol = "MM2",
+    Platform = "Roblox",
+    Language = "Lua",
+    Revision = "R371",
+    BuildDate = "2026.09",
+    Environment = "Production",
+    Identifier = "MM2-FRZ-UI",
+    Status = "Operational"
+}
+
+MM2Client.Configuration = {
+    Enabled = true,
+    Initialized = true,
+    AutoStart = false,
+    AutoUpdate = false,
+    AutoRefresh = false,
+    SaveState = false,
+    LoadState = false,
+    DebugMode = false,
+    DeveloperMode = false,
+    SafeMode = true,
+    InterfaceMode = "Advanced",
+    ThemeMode = "Dark",
+    ScaleMode = "Automatic",
+    InputMode = "Default"
+}
+
+MM2Client.Engine = {
+    Name = "Nova Runtime",
+    Version = "8.1.0",
+    State = "Ready",
+    Initialized = true,
+    Loaded = true,
+    Running = false,
+    Suspended = false,
+    Paused = false,
+    Shutdown = false,
+    TickRate = 60,
+    FrameRate = 60,
+    DeltaTime = 0,
+    TimeScale = 1,
+    Priority = "Normal",
+    ThreadCount = 0,
+    WorkerCount = 0,
+    QueueSize = 0
+}
+
+MM2Client.Player = {
+    Name = "LOCAL_PLAYER",
+    DisplayName = "Player",
+    UserId = 0,
+    Alive = true,
+    Role = "Unknown",
+    Health = 100,
+    MaxHealth = 100,
+    WalkSpeed = 16,
+    JumpPower = 50,
+    CharacterLoaded = true,
+    HumanoidReady = true,
+    RootPartReady = true,
+    HeadReady = true,
+    AnimatorReady = true,
+    BackpackReady = true,
+    EquippedTool = nil,
+    Position = nil,
+    Velocity = nil,
+    Direction = nil,
+    Distance = 0,
+    State = "Idle"
+}
+
+MM2Client.Character = {
+    Loaded = true,
+    Valid = true,
+    Humanoid = nil,
+    RootPart = nil,
+    Head = nil,
+    Torso = nil,
+    Animator = nil,
+    HumanoidState = "Running",
+    MovementState = "Idle",
+    CharacterState = "Ready",
+    LastPosition = nil,
+    CurrentPosition = nil,
+    LastVelocity = nil,
+    CurrentVelocity = nil,
+    Spawned = true,
+    Respawning = false
+}
+
+MM2Client.Round = {
+    Active = true,
+    State = "Waiting",
+    Phase = "Intermission",
+    Timer = 0,
+    MaxTime = 180,
+    Map = "Unknown",
+    RoundID = "LOCAL_ROUND",
+    RoundNumber = 0,
+    Players = 0,
+    AlivePlayers = 0,
+    DeadPlayers = 0,
+    Spectators = 0,
+    Started = false,
+    Ended = false,
+    Loading = false,
+    Results = false,
+    Winner = nil,
+    Status = "Waiting"
+}
+
+MM2Client.RoundState = {
+    Lobby = true,
+    Loading = false,
+    Intermission = true,
+    Active = false,
+    Ending = false,
+    Complete = false,
+    Spectating = false,
+    Unknown = false,
+    Current = "Lobby",
+    Previous = nil,
+    Changed = false
+}
+
+MM2Client.Murderer = {
+    Detected = false,
+    Player = nil,
+    Name = nil,
+    Distance = 0,
+    KnifeEquipped = false,
+    KnifeVisible = false,
+    KnifeType = nil,
+    KnifeState = "Unknown",
+    LastPosition = nil,
+    CurrentPosition = nil,
+    Velocity = 0,
+    Direction = nil,
+    Prediction = 0,
+    Target = nil,
+    State = "Unknown",
+    Confidence = 0,
+    LineOfSight = false
+}
+
+MM2Client.Sheriff = {
+    Detected = false,
+    Player = nil,
+    Name = nil,
+    Distance = 0,
+    GunEquipped = false,
+    GunVisible = false,
+    GunType = nil,
+    GunState = "Unknown",
+    Target = nil,
+    ShotState = "Idle",
+    LastShot = 0,
+    Accuracy = 0,
+    Confidence = 0,
+    LineOfSight = false
+}
+
+MM2Client.Innocents = {
+    Count = 0,
+    Nearby = {},
+    Alive = {},
+    Dead = {},
+    Unknown = {},
+    Spectators = {},
+    Players = {},
+    Candidates = {},
+    Confirmed = {},
+    Suspects = {}
+}
+
+MM2Client.Roles = {
+    Current = "Unknown",
+    Previous = "Unknown",
+    Murderer = nil,
+    Sheriff = nil,
+    Hero = nil,
+    Innocents = {},
+    Confirmed = {},
+    Unknown = {},
+    Scanned = false,
+    ScanState = "Idle",
+    ScanTime = 0,
+    Confidence = 0
+}
+
+MM2Client.Inventory = {
+    Knife = nil,
+    Gun = nil,
+    Pet = nil,
+    Effect = nil,
+    Radio = nil,
+    Emotes = {},
+    Skins = {},
+    Equipped = {},
+    Owned = {},
+    Selected = {},
+    Categories = {},
+    LastItem = nil,
+    ItemCount = 0,
+    Loaded = false
+}
+
+MM2Client.Equipment = {
+    Current = nil,
+    Previous = nil,
+    Knife = nil,
+    Gun = nil,
+    Tool = nil,
+    Pet = nil,
+    Effect = nil,
+    Radio = nil,
+    State = "Idle",
+    Changed = false,
+    Updated = false
+}
+
+MM2Client.Map = {
+    Name = "Unknown",
+    ID = "UNKNOWN",
+    Loaded = false,
+    Loading = false,
+    Spawn = nil,
+    Lobby = nil,
+    SpectatorArea = nil,
+    SafeZones = {},
+    KillZones = {},
+    Doors = {},
+    Vents = {},
+    Rooms = {},
+    Hallways = {},
+    Positions = {},
+    Objects = {},
+    Furniture = {},
+    Windows = {},
+    Stairs = {},
+    Elevators = {},
+    Interactables = {},
+    Boundaries = {},
+    Geometry = {},
+    Metadata = {}
+}
+
+MM2Client.World = {
+    Loaded = false,
+    MapName = "Unknown",
+    Lighting = {},
+    Atmosphere = {},
+    Camera = {},
+    Terrain = {},
+    Objects = {},
+    Decorations = {},
+    SpawnPoints = {},
+    Locations = {},
+    Regions = {},
+    Boundaries = {},
+    State = "Unknown"
+}
+
+MM2Client.Freeze = {
+    Enabled = false,
+    State = "Idle",
+    Target = nil,
+    TargetName = nil,
+    Duration = 0,
+    StartTime = 0,
+    EndTime = 0,
+    PositionLock = false,
+    CharacterLock = false,
+    HumanoidLock = false,
+    RootLock = false,
+    MovementLock = false,
+    NetworkLock = false,
+    RotationLock = false,
+    AnimationLock = false,
+    StateLock = false,
+    VelocityLock = false,
+    WorkspaceLock = false,
+    ReplicationLock = false,
+    Mode = "Default",
+    Profile = "Standard",
+    Status = "Ready"
+}
+
+MM2Client.Detection = {
+    Enabled = false,
+    RoleScan = false,
+    PlayerScan = false,
+    KnifeScan = false,
+    GunScan = false,
+    DistanceScan = false,
+    LineOfSight = false,
+    VelocityScan = false,
+    AnimationScan = false,
+    ToolScan = false,
+    CharacterScan = false,
+    MovementScan = false,
+    StateScan = false,
+    MapScan = false,
+    EquipmentScan = false,
+    RoundScan = false,
+    TargetScan = false,
+    LastScan = 0,
+    ScanCount = 0,
+    State = "Idle"
+}
+
+MM2Client.Prediction = {
+    Enabled = false,
+    Target = nil,
+    Position = nil,
+    PreviousPosition = nil,
+    Velocity = nil,
+    Direction = nil,
+    Acceleration = nil,
+    Time = 0,
+    Offset = 0,
+    HorizontalOffset = 0,
+    VerticalOffset = 0,
+    Confidence = 0,
+    Samples = 0,
+    SampleRate = 0,
+    State = "Idle"
+}
+
+MM2Client.Targeting = {
+    Enabled = false,
+    Current = nil,
+    Previous = nil,
+    Candidate = nil,
+    Locked = false,
+    Valid = false,
+    Distance = 0,
+    Radius = 0,
+    Priority = "None",
+    Mode = "Manual",
+    State = "Idle",
+    Confidence = 0,
+    LastTarget = nil
+}
+
+MM2Client.Combat = {
+    Enabled = false,
+    State = "Idle",
+    KnifeState = "Unknown",
+    GunState = "Unknown",
+    TargetState = "None",
+    Range = 0,
+    HitboxState = "Default",
+    TraceState = "Idle",
+    AttackState = "Idle",
+    DefenseState = "Idle",
+    Cooldown = 0,
+    LastAction = 0,
+    ActionCount = 0,
+    Registered = false
+}
+
+MM2Client.Movement = {
+    Enabled = false,
+    State = "Idle",
+    WalkSpeed = 16,
+    JumpPower = 50,
+    Gravity = 196.2,
+    Direction = nil,
+    Velocity = nil,
+    Acceleration = nil,
+    Grounded = true,
+    Jumping = false,
+    Falling = false,
+    Running = false,
+    Walking = false,
+    Sprinting = false,
+    Crouching = false,
+    Locked = false
+}
+
+MM2Client.Visuals = {
+    Enabled = false,
+    ESP = false,
+    Chams = false,
+    Tracers = false,
+    Names = false,
+    Distance = false,
+    RoleColors = false,
+    Highlight = false,
+    Boxes = false,
+    HealthBars = false,
+    Skeleton = false,
+    Arrows = false,
+    MapMarkers = false,
+    TargetMarker = false,
+    KnifeIndicator = false,
+    GunIndicator = false,
+    StateIndicator = false,
+    RenderDistance = 0,
+    Opacity = 1,
+    State = "Idle"
+}
+
+MM2Client.Rendering = {
+    Enabled = true,
+    Quality = "High",
+    Resolution = "Automatic",
+    Shadows = true,
+    Reflections = true,
+    AntiAliasing = true,
+    Bloom = false,
+    Blur = false,
+    DepthOfField = false,
+    FieldOfView = 70,
+    Viewport = {},
+    Camera = {},
+    Objects = {},
+    Layers = {},
+    State = "Ready"
+}
+
+MM2Client.UI = {
+    Visible = true,
+    MainWindow = "MM2 Client",
+    CurrentTab = "Combat",
+    Open = true,
+    Scale = 1,
+    Transparency = 0,
+    Accent = "Purple",
+    Theme = "Dark",
+    Rounded = true,
+    Blur = true,
+    Shadow = true,
+    Animations = true,
+    Notifications = true,
+    Sidebar = true,
+    Header = true,
+    Footer = true,
+    State = "Ready"
+}
+
+MM2Client.UI.Tabs = {
+    "Combat",
+    "Visuals",
+    "Players",
+    "Roles",
+    "Freeze",
+    "Prediction",
+    "Movement",
+    "Inventory",
+    "Maps",
+    "Network",
+    "Settings",
+    "Debug"
+}
+
+MM2Client.UI.Elements = {
+    RoleIndicator = {},
+    PlayerList = {},
+    TargetSelector = {},
+    FreezePanel = {},
+    PredictionPanel = {},
+    DistanceDisplay = {},
+    RoundTimer = {},
+    MapDisplay = {},
+    StatusPanel = {},
+    NetworkPanel = {},
+    DebugConsole = {},
+    PerformancePanel = {},
+    InventoryPanel = {},
+    SettingsPanel = {},
+    RolePanel = {},
+    DetectionPanel = {},
+    MovementPanel = {},
+    CombatPanel = {},
+    SystemPanel = {}
+}
+
+MM2Client.Interface = {
+    Header = {
+        Title = "MM2 CLIENT",
+        Subtitle = "RUNTIME INTERFACE",
+        Status = "ONLINE",
+        Version = "3.7.1"
+    },
+    Sidebar = {
+        Width = 210,
+        Expanded = true,
+        Selected = "Combat",
+        Items = {}
+    },
+    Footer = {
+        Status = "READY",
+        Connection = "CONNECTED",
+        Runtime = "STANDBY"
+    },
+    Window = {
+        Width = 820,
+        Height = 520,
+        MinimumWidth = 600,
+        MinimumHeight = 400,
+        Resizable = true,
+        Draggable = true,
+        Visible = true
+    }
+}
+
+MM2Client.Network = {
+    Connected = true,
+    Ping = 0,
+    Server = "MM2",
+    RemoteState = "Idle",
+    Replication = true,
+    Ownership = "Automatic",
+    LastPacket = 0,
+    PacketsSent = 0,
+    PacketsReceived = 0,
+    PacketsDropped = 0,
+    Incoming = 0,
+    Outgoing = 0,
+    Bandwidth = 0,
+    ConnectionState = "Connected",
+    Protocol = "RBX",
+    Session = "LOCAL"
+}
+
+MM2Client.Replication = {
+    Enabled = true,
+    State = "Idle",
+    Objects = {},
+    Players = {},
+    Characters = {},
+    Tools = {},
+    Positions = {},
+    Properties = {},
+    Signals = {},
+    Queue = {},
+    LastUpdate = 0,
+    UpdateRate = 0,
+    Pending = 0
+}
+
+MM2Client.Security = {
+    Enabled = true,
+    Integrity = true,
+    RuntimeCheck = true,
+    SessionCheck = true,
+    EnvironmentCheck = true,
+    RemoteCheck = true,
+    State = "Clean",
+    Flags = {},
+    Warnings = {},
+    Violations = {},
+    Checks = {},
+    LastCheck = 0,
+    CheckCount = 0
+}
+
+MM2Client.Session = {
+    ID = "MM2_SESSION",
+    User = "Guest",
+    Authenticated = true,
+    Connected = true,
+    Started = os.clock(),
+    State = "Ready",
+    Region = "AUTO",
+    ServerID = "LOCAL",
+    SessionState = "ACTIVE",
+    Heartbeat = 0,
+    LastActivity = 0
+}
+
+MM2Client.Diagnostics = {
+    Enabled = false,
+    Console = {},
+    Logs = {},
+    Errors = {},
+    Warnings = {},
+    Trace = {},
+    Events = {},
+    Reports = {},
+    LastError = nil,
+    LastWarning = nil,
+    ErrorCount = 0,
+    WarningCount = 0,
+    TraceCount = 0
+}
+
+MM2Client.Performance = {
+    FPS = 0,
+    FrameTime = 0,
+    CPU = 0,
+    GPU = 0,
+    Memory = 0,
+    Ping = 0,
+    Network = 0,
+    RenderTime = 0,
+    ScriptTime = 0,
+    PhysicsTime = 0,
+    UpdateTime = 0,
+    LastFrame = 0,
+    AverageFrame = 0,
+    MinimumFPS = 0,
+    MaximumFPS = 0
+}
+
+MM2Client.Input = {
+    Enabled = true,
+    Mouse = {},
+    Keyboard = {},
+    Gamepad = {},
+    Touch = {},
+    Focus = true,
+    Captured = false,
+    LastInput = nil,
+    InputState = "Idle",
+    MousePosition = nil,
+    CursorVisible = true
+}
+
+MM2Client.Animation = {
+    Enabled = true,
+    Current = nil,
+    Previous = nil,
+    Playing = false,
+    Speed = 1,
+    Weight = 1,
+    Priority = "Core",
+    Tracks = {},
+    Loaded = {},
+    Cache = {},
+    State = "Idle"
+}
+
+MM2Client.State = {
+    Current = "Ready",
+    Previous = nil,
+    Initial = true,
+    Changed = false,
+    Locked = false,
+    Dirty = false,
+    Stable = true,
+    Timestamp = 0,
+    Sequence = 0
+}
+
+MM2Client.Registry = {
+    Players = {},
+    Roles = {},
+    Maps = {},
+    Tools = {},
+    Windows = {},
+    Panels = {},
+    Components = {},
+    Services = {},
+    Modules = {},
+    Events = {},
+    Signals = {}
+}
+
+MM2Client.Resources = {
+    Textures = {},
+    Icons = {},
+    Fonts = {},
+    Sounds = {},
+    Animations = {},
+    Materials = {},
+    Themes = {},
+    Assets = {},
+    Loaded = 0,
+    Pending = 0
+}
+
+MM2Client.Flags = {
+    Initialized = true,
+    PlayerReady = true,
+    CharacterReady = true,
+    RoundReady = true,
+    MapReady = false,
+    UIReady = true,
+    NetworkReady = true,
+    SecurityReady = true,
+    CacheReady = true,
+    RuntimeReady = true,
+    FreezeReady = true,
+    PredictionReady = true,
+    DetectionReady = true
+}
+
+MM2Client.Profiles = {
+    Default = {
+        Name = "Default",
+        Mode = "Standard",
+        Freeze = false,
+        Prediction = false,
+        Visuals = false,
+        Movement = false,
+        Debug = false
+    },
+
+    Combat = {
+        Name = "Combat",
+        Mode = "Combat",
+        Freeze = false,
+        Prediction = false,
+        Visuals = true,
+        Movement = false,
+        Debug = false
+    },
+
+    Freeze = {
+        Name = "Freeze",
+        Mode = "Freeze",
+        Freeze = true,
+        Prediction = false,
+        Visuals = true,
+        Movement = false,
+        Debug = false
+    },
+
+    Visual = {
+        Name = "Visual",
+        Mode = "Visual",
+        Freeze = false,
+        Prediction = false,
+        Visuals = true,
+        Movement = false,
+        Debug = false
+    },
+
+    Debug = {
+        Name = "Developer",
+        Mode = "Debug",
+        Freeze = false,
+        Prediction = false,
+        Visuals = false,
+        Movement = false,
+        Debug = true
+    }
+}
+
+MM2Client.Modules = {
+    Core = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Player = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Character = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Roles = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Round = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Freeze = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Prediction = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Visuals = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Network = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    },
+
+    Interface = {
+        Loaded = true,
+        Enabled = true,
+        State = "Ready"
+    }
+}
+
+MM2Client.Services = {
+    PlayerService = {},
+    CharacterService = {},
+    RoleService = {},
+    RoundService = {},
+    MapService = {},
+    TargetService = {},
+    FreezeService = {},
+    PredictionService = {},
+    NetworkService = {},
+    VisualService = {},
+    InterfaceService = {},
+    CacheService = {},
+    SecurityService = {},
+    RenderService = {},
+    InputService = {},
+    AnimationService = {},
+    EquipmentService = {},
+    SessionService = {},
+    DiagnosticsService = {},
+    PerformanceService = {}
+}
+
+MM2Client.Controllers = {
+    PlayerController = {},
+    CharacterController = {},
+    RoleController = {},
+    RoundController = {},
+    FreezeController = {},
+    PredictionController = {},
+    TargetController = {},
+    MovementController = {},
+    CombatController = {},
+    VisualController = {},
+    UIController = {},
+    NetworkController = {},
+    SessionController = {}
+}
+
+MM2Client.Components = {
+    Button = {},
+    Toggle = {},
+    Slider = {},
+    Dropdown = {},
+    Label = {},
+    Frame = {},
+    Panel = {},
+    Window = {},
+    Sidebar = {},
+    Header = {},
+    Footer = {},
+    Separator = {},
+    Container = {},
+    ProgressBar = {},
+    Status = {},
+    Indicator = {},
+    PlayerCard = {},
+    RoleCard = {},
+    MapCard = {},
+    SystemCard = {}
+}
+
+MM2Client.Windows = {
+    Main = {
+        Open = true,
+        Visible = true,
+        Focused = true,
+        Title = "MM2 Client",
+        State = "Normal"
+    },
+
+    Settings = {
+        Open = false,
+        Visible = false,
+        Focused = false,
+        Title = "Settings",
+        State = "Normal"
+    },
+
+    Debug = {
+        Open = false,
+        Visible = false,
+        Focused = false,
+        Title = "Runtime Console",
+        State = "Normal"
+    },
+
+    Players = {
+        Open = false,
+        Visible = false,
+        Focused = false,
+        Title = "Players",
+        State = "Normal"
+    }
+}
+
+MM2Client.Pages = {
+    Combat = {},
+    Visuals = {},
+    Players = {},
+    Roles = {},
+    Freeze = {},
+    Prediction = {},
+    Movement = {},
+    Inventory = {},
+    Maps = {},
+    Network = {},
+    Settings = {},
+    Debug = {}
+}
+
+MM2Client.Panels = {
+    TopBar = {},
+    SideBar = {},
+    MainContent = {},
+    StatusBar = {},
+    PlayerPanel = {},
+    RolePanel = {},
+    FreezePanel = {},
+    PredictionPanel = {},
+    NetworkPanel = {},
+    SystemPanel = {},
+    PerformancePanel = {},
+    ConfigurationPanel = {}
+}
+
+MM2Client.Widgets = {
+    FPS = {},
+    Ping = {},
+    Timer = {},
+    Role = {},
+    PlayerCount = {},
+    RoundState = {},
+    ServerState = {},
+    FreezeState = {},
+    TargetState = {},
+    NetworkState = {},
+    RuntimeState = {},
+    SecurityState = {}
+}
+
+local RoleManager = {}
+
+function RoleManager.Refresh()
+    MM2Client.Murderer.Detected = false
+    MM2Client.Sheriff.Detected = false
+    MM2Client.Roles.Scanned = false
+end
+
+function RoleManager.GetMurderer()
+    return MM2Client.Murderer.Player
+end
+
+function RoleManager.GetSheriff()
+    return MM2Client.Sheriff.Player
+end
+
+function RoleManager.GetHero()
+    return MM2Client.Roles.Hero
+end
+
+function RoleManager.Clear()
+    MM2Client.Murderer.Player = nil
+    MM2Client.Sheriff.Player = nil
+    MM2Client.Roles.Hero = nil
+end
+
+function RoleManager.Reset()
+    MM2Client.Roles.Current = "Unknown"
+    MM2Client.Roles.Previous = "Unknown"
+end
+
+local FreezeManager = {}
+
+function FreezeManager.Initialize()
+    MM2Client.Freeze.State = "Idle"
+    MM2Client.Freeze.Enabled = false
+end
+
+function FreezeManager.SetTarget(target)
+    MM2Client.Freeze.Target = target
+end
+
+function FreezeManager.ClearTarget()
+    MM2Client.Freeze.Target = nil
+    MM2Client.Freeze.TargetName = nil
+end
+
+function FreezeManager.SetDuration(duration)
+    MM2Client.Freeze.Duration = duration or 0
+end
+
+function FreezeManager.Reset()
+    MM2Client.Freeze.Enabled = false
+    MM2Client.Freeze.State = "Idle"
+    MM2Client.Freeze.Duration = 0
+    MM2Client.Freeze.StartTime = 0
+    MM2Client.Freeze.EndTime = 0
+end
+
+function FreezeManager.Status()
+    return MM2Client.Freeze.State
+end
+
+local PredictionManager = {}
+
+function PredictionManager.Reset()
+    MM2Client.Prediction.Target = nil
+    MM2Client.Prediction.Position = nil
+    MM2Client.Prediction.PreviousPosition = nil
+    MM2Client.Prediction.Velocity = nil
+    MM2Client.Prediction.Direction = nil
+    MM2Client.Prediction.Confidence = 0
+end
+
+function PredictionManager.Update()
+    MM2Client.Prediction.Time = 0
+    MM2Client.Prediction.Confidence = 0
+end
+
+function PredictionManager.Clear()
+    PredictionManager.Reset()
+end
+
+local PlayerManager = {
+    Registered = {},
+    Active = {},
+    Dead = {},
+    Spectators = {},
+    Unknown = {},
+    Nearby = {},
+    Cache = {}
+}
+
+function PlayerManager.Refresh()
+    MM2Client.Innocents.Count = 0
+end
+
+function PlayerManager.Clear()
+    PlayerManager.Registered = {}
+    PlayerManager.Active = {}
+    PlayerManager.Dead = {}
+    PlayerManager.Spectators = {}
+end
+
+function PlayerManager.Reset()
+    PlayerManager.Clear()
+end
+
+local MapManager = {
+    Current = nil,
+    Loaded = false,
+    Objects = {},
+    Locations = {},
+    Rooms = {},
+    Doors = {},
+    SpawnPoints = {},
+    Cache = {}
+}
+
+function MapManager.Refresh()
+    MapManager.Loaded = false
+end
+
+function MapManager.Clear()
+    MapManager.Current = nil
+    MapManager.Objects = {}
+    MapManager.Locations = {}
+end
+
+function MapManager.Reset()
+    MapManager.Clear()
+    MapManager.Loaded = false
+end
+
+local TargetManager = {
+    Current = nil,
+    Previous = nil,
+    Candidate = nil,
+    Locked = false,
+    Distance = 0,
+    Valid = false,
+    Confidence = 0,
+    State = "Idle"
+}
+
+function TargetManager.Clear()
+    TargetManager.Current = nil
+    TargetManager.Previous = nil
+    TargetManager.Candidate = nil
+    TargetManager.Locked = false
+    TargetManager.Valid = false
+end
+
+function TargetManager.Reset()
+    TargetManager.Clear()
+    TargetManager.State = "Idle"
+end
+
+local CombatRuntime = {
+    KnifeState = "Unknown",
+    GunState = "Unknown",
+    TargetState = "None",
+    Range = 0,
+    HitboxState = "Default",
+    TraceState = "Idle",
+    AttackState = "Idle",
+    DefenseState = "Idle",
+    ActionState = "None",
+    Cooldown = 0
+}
+
+function CombatRuntime.Reset()
+    CombatRuntime.KnifeState = "Unknown"
+    CombatRuntime.GunState = "Unknown"
+    CombatRuntime.TargetState = "None"
+    CombatRuntime.TraceState = "Idle"
+    CombatRuntime.AttackState = "Idle"
+    CombatRuntime.DefenseState = "Idle"
+end
+
+local VisualRuntime = {
+    ESP = false,
+    Chams = false,
+    Tracers = false,
+    Names = false,
+    Distance = false,
+    RoleColors = false,
+    Highlight = false,
+    Boxes = false,
+    Skeleton = false,
+    Health = false
+}
+
+function VisualRuntime.Reset()
+    VisualRuntime.ESP = false
+    VisualRuntime.Chams = false
+    VisualRuntime.Tracers = false
+    VisualRuntime.Names = false
+    VisualRuntime.Distance = false
+end
+
+local EventManager = {
+    Events = {},
+    Connections = {},
+    Signals = {},
+    Queues = {},
+    Handlers = {}
+}
+
+function EventManager.Register(name)
+    EventManager.Events[name] = {}
+end
+
+function EventManager.Clear()
+    EventManager.Events = {}
+    EventManager.Connections = {}
+    EventManager.Signals = {}
+    EventManager.Queues = {}
+end
+
+function EventManager.Exists(name)
+    return EventManager.Events[name] ~= nil
+end
+
+local StateManager = {
+    Current = "Idle",
+    Previous = nil,
+    Locked = false,
+    Changed = false,
+    Sequence = 0,
+    Timestamp = 0
+}
+
+function StateManager.Set(state)
+    StateManager.Previous = StateManager.Current
+    StateManager.Current = state
+    StateManager.Sequence = StateManager.Sequence + 1
+    StateManager.Changed = true
+end
+
+function StateManager.Reset()
+    StateManager.Current = "Idle"
+    StateManager.Previous = nil
+    StateManager.Changed = false
+end
+
+local SessionManager = {
+    ID = "MM2_SESSION",
+    Authenticated = true,
+    Connected = true,
+    Started = os.clock(),
+    State = "Ready",
+    Region = "AUTO",
+    Server = "MM2"
+}
+
+function SessionManager.Reset()
+    SessionManager.State = "Ready"
+    SessionManager.Connected = true
+end
+
+local DebugRuntime = {
+    Enabled = false,
+    Console = {},
+    Logs = {},
+    Errors = {},
+    Warnings = {},
+    Trace = {},
+    History = {},
+    Commands = {}
+}
+
+function DebugRuntime.Clear()
+    DebugRuntime.Console = {}
+    DebugRuntime.Logs = {}
+    DebugRuntime.Errors = {}
+    DebugRuntime.Warnings = {}
+    DebugRuntime.Trace = {}
+end
+
+function DebugRuntime.Reset()
+    DebugRuntime.Clear()
+    DebugRuntime.Enabled = false
+end
+
+local SettingsManager = {
+    General = {},
+    Combat = {},
+    Visuals = {},
+    Movement = {},
+    Network = {},
+    Interface = {},
+    Freeze = {},
+    Prediction = {},
+    Detection = {},
+    Inventory = {},
+    Misc = {}
+}
+
+function SettingsManager.Reset()
+    SettingsManager.General = {}
+    SettingsManager.Combat = {}
+    SettingsManager.Visuals = {}
+    SettingsManager.Movement = {}
+    SettingsManager.Network = {}
+end
+
+local CacheManager = {
+    Players = {},
+    Characters = {},
+    Roles = {},
+    Tools = {},
+    Positions = {},
+    Distances = {},
+    Animations = {},
+    Remotes = {},
+    Maps = {},
+    Objects = {},
+    Targets = {},
+    Sessions = {},
+    Metadata = {}
+}
+
+function CacheManager.Clear()
+    CacheManager.Players = {}
+    CacheManager.Characters = {}
+    CacheManager.Roles = {}
+    CacheManager.Tools = {}
+    CacheManager.Positions = {}
+    CacheManager.Distances = {}
+end
+
+function CacheManager.Reset()
+    CacheManager.Clear()
+end
+
+local RuntimeServices = {
+    PlayerService = {},
+    CharacterService = {},
+    RoleService = {},
+    RoundService = {},
+    MapService = {},
+    TargetService = {},
+    FreezeService = {},
+    PredictionService = {},
+    NetworkService = {},
+    VisualService = {},
+    InterfaceService = {},
+    CacheService = {},
+    SecurityService = {},
+    RenderingService = {},
+    InputService = {},
+    AnimationService = {},
+    EquipmentService = {},
+    SessionService = {},
+    DiagnosticsService = {},
+    PerformanceService = {},
+    RuntimeService = {},
+    StateService = {}
+}
+
+MM2Client.Services = RuntimeServices
+
+for i = 1, 32 do
+    MM2Client.Runtime["Module_" .. i] = {
+        ID = i,
+        Name = "RuntimeModule_" .. i,
+        Loaded = true,
+        Active = false,
+        Status = "Ready",
+        Priority = i,
+        Version = "1.0",
+        Dependencies = {},
+        State = "Idle"
+    }
+end
+
+for i = 1, 64 do
+    MM2Client.Cache["Slot_" .. i] = {
+        ID = i,
+        Valid = false,
+        Data = nil,
+        Timestamp = 0,
+        State = "Empty"
+    }
+end
+
+for i = 1, 24 do
+    MM2Client.Registry["Registry_" .. i] = {
+        Name = "Entry_" .. i,
+        Registered = true,
+        Active = false,
+        State = "Idle"
+    }
+end
+
+for i = 1, 20 do
+    MM2Client.Flags["RuntimeFlag_" .. i] = false
+end
+
+for i = 1, 16 do
+    MM2Client.Resources["Resource_" .. i] = {
+        Loaded = false,
+        Cached = false,
+        Valid = true
+    }
+end
+
+for i = 1, 18 do
+    MM2Client.Controllers["Controller_" .. i] = {
+        Initialized = true,
+        Enabled = false,
+        State = "Idle"
+    }
+end
+
+for i = 1, 22 do
+    MM2Client.Services["Service_" .. i] = {
+        Initialized = true,
+        Connected = false,
+        State = "Standby"
+    }
+end
+
+for i = 1, 30 do
+    MM2Client.Components["Component_" .. i] = {
+        Visible = true,
+        Enabled = false,
+        Loaded = true,
+        State = "Idle"
+    }
+end
+
+for i = 1, 12 do
+    MM2Client.Windows["Window_" .. i] = {
+        Visible = false,
+        Open = false,
+        Focused = false,
+        State = "Inactive"
+    }
+end
+
+for i = 1, 40 do
+    MM2Client.Panels["Panel_" .. i] = {
+        Visible = false,
+        Enabled = false,
+        State = "Idle"
+    }
+end
+
+MM2Client.Runtime.Status = "System Ready"
+MM2Client.Runtime.Initialized = true
+MM2Client.Runtime.Loaded = true
+MM2Client.Runtime.Running = false
+MM2Client.Runtime.ThreadCount = 0
+MM2Client.Runtime.Tick = 0
+MM2Client.Runtime.Frame = 0
+MM2Client.Runtime.Delta = 0
+MM2Client.Runtime.LastUpdate = 0
+MM2Client.Runtime.Errors = 0
+MM2Client.Runtime.Warnings = 0
+
+MM2Client.Runtime.BuildState = "COMPLETE"
+MM2Client.Runtime.ModuleState = "READY"
+MM2Client.Runtime.InterfaceState = "READY"
+MM2Client.Runtime.NetworkState = "CONNECTED"
+MM2Client.Runtime.SecurityState = "CLEAN"
+MM2Client.Runtime.PlayerState = "READY"
+MM2Client.Runtime.RoundState = "WAITING"
+MM2Client.Runtime.MapState = "STANDBY"
+MM2Client.Runtime.FreezeState = "IDLE"
+MM2Client.Runtime.PredictionState = "IDLE"
+MM2Client.Runtime.DetectionState = "IDLE"
+MM2Client.Runtime.TargetState = "NONE"
+MM2Client.Runtime.RenderState = "READY"
+
+local EmptyRuntime = {
+    State = "Idle",
+    Active = false,
+    Enabled = false,
+    Loaded = true,
+    Initialized = true,
+    Ready = true,
+    Valid = true,
+    Running = false,
+    Locked = false,
+    Pending = false,
+    Complete = true,
+    Error = nil,
+    Warning = nil,
+    Result = nil,
+    Data = nil,
+    Target = nil,
+    Timestamp = 0
+}
+
+MM2Client.EmptyRuntime = EmptyRuntime
+
+MM2Client.Runtime.Status = "MM2 CLIENT READY"
+MM2Client.Runtime.State = "STANDBY"
+MM2Client.Runtime.Mode = "CLIENT"
+MM2Client.Runtime.Channel = "STABLE"
+MM2Client.Runtime.Profile = "DEFAULT"
+MM2Client.Runtime.Session = "LOCAL"
+MM2Client.Runtime.Environment = "ROBLOX"
+MM2Client.Runtime.Protocol = "MM2"
+MM2Client.Runtime.Interface = "NOVA"
+MM2Client.Runtime.Theme = "DARK"
+MM2Client.Runtime.Complete = true
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/best-mm2-script/scripts/refs/heads/main/mm2-freeze-trade-functionality"))()
